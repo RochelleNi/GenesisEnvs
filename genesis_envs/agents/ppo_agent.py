@@ -74,9 +74,7 @@ class PPOAgent(AgentInterface):
             log_probs_old = dist_old.log_prob(actions)
 
         advantages = discounted_rewards - value_old
-        normalized_advantages = (advantages - advantages.mean(dim=0, keepdim=True)) / (
-            advantages.std(dim=0, keepdim=True) + 1e-8
-        )
+        normalized_advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
 
         # TODO: support minibatch update
         # TODO: support gradient clipping

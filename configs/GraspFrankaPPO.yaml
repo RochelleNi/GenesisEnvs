@@ -6,7 +6,7 @@ environment:
 network:
     actor_critic_model:
         type: genesis_envs.models.MLP
-        input_dim: 6
+        input_dim: 9
         hidden_dim: 64
         output_dim: 9
         num_layers: 3
@@ -17,18 +17,18 @@ optimizer:
 
 agent:
     type: genesis_envs.agents.PPOAgent
-    discount_factor: 0.99
+    discount_factor: 0.98
     clip_epsilon: 0.2
     value_coef: 0.5
     entropy_coef: 0.01
     num_update_steps: 10
-    normalize_discounted_reward: true
+    normalize_discounted_reward: false
 
 training:
     exp_name: "GraspFrankaPPO"
     output_dir: "outputs"
     horizon: 50
-    num_epochs: 500
+    num_epochs: 2000
     log_every_epochs: 1
     save_checkpoint_every_epochs: 10
     device: cpu
